@@ -1,0 +1,9 @@
+---
+ssh::config_file_template: "ssh/%{::lsbdistcodename}/etc/ssh/sshd_config.erb"
+ssh::allow_users:
+  - 'dhoppe'
+ssh::password_authentication: 'no'
+ssh::permit_root_login: 'no'
+ssh::pubkey_authentication: 'yes'
+ssh::use_dns: 'yes'
+ssh::use_pam: 'yes'
