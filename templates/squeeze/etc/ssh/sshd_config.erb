@@ -102,6 +102,6 @@ DenyGroups <%= scope.lookupvar('::ssh::deny_groups').join(" ") %>
 <% if scope.lookupvar('::ssh::deny_users').any? -%>
 DenyUsers <%= scope.lookupvar('::ssh::deny_users').join(" ") %>
 <% end -%>
-<% if scope.lookupvar('::ssh::deny_users') == 'yes' -%>
+<% if scope.lookupvar('::ssh::use_dns') == 'yes' -%>
 UseDNS <%= scope.lookupvar('::ssh::use_dns') %>
 <% end -%>
