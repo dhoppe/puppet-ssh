@@ -1,3 +1,7 @@
+## 2014-12-08 Release 1.0.2
+### Summary:
+- [Puppet] Fix broken templates
+
 ## 2014-12-06 Release 1.0.1
 ### Summary:
 - [Rspec] Made some changes to the build environment
