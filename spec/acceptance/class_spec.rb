@@ -3,7 +3,6 @@ require 'spec_helper_acceptance'
 case fact('osfamily')
 when 'Debian'
   package_name     = 'openssh-server'
-  config_dir_path  = '/etc/ssh'
   config_file_path = '/etc/ssh/sshd_config'
   service_name     = 'ssh'
 end
