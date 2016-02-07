@@ -6,7 +6,7 @@ describe 'ssh', :type => :class do
       :osfamily => osfamily,
     }}
 
-#    it { is_expected.to compile.with_all_deps }
+    # it { is_expected.to compile.with_all_deps }
     it { is_expected.to contain_anchor('ssh::begin') }
     it { is_expected.to contain_class('ssh::params') }
     it { is_expected.to contain_class('ssh::install') }
@@ -18,9 +18,9 @@ describe 'ssh', :type => :class do
       describe 'ssh::install' do
         context 'defaults' do
           it do
-            is_expected.to contain_package('ssh').with({
+            is_expected.to contain_package('ssh').with(
               'ensure' => 'present',
-            })
+            )
           end
         end
 
@@ -30,9 +30,9 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_package('ssh').with({
+            is_expected.to contain_package('ssh').with(
               'ensure' => 'latest',
-            })
+            )
           end
         end
 
@@ -44,22 +44,22 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_package('ssh').with({
+            is_expected.to contain_package('ssh').with(
               'ensure' => 'absent',
-            })
+            )
           end
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
           it do
-            is_expected.to contain_service('ssh').with({
+            is_expected.to contain_service('ssh').with(
               'ensure' => 'stopped',
               'enable' => false,
-            })
+            )
           end
         end
 
@@ -71,22 +71,22 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_package('ssh').with({
+            is_expected.to contain_package('ssh').with(
               'ensure' => 'purged',
-            })
+            )
           end
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'absent',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
           it do
-            is_expected.to contain_service('ssh').with({
+            is_expected.to contain_service('ssh').with(
               'ensure' => 'stopped',
               'enable' => false,
-            })
+            )
           end
         end
       end
@@ -94,11 +94,11 @@ describe 'ssh', :type => :class do
       describe 'ssh::config' do
         context 'defaults' do
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -108,7 +108,7 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.dir').with({
+            is_expected.to contain_file('ssh.dir').with(
               'ensure'  => 'directory',
               'force'   => false,
               'purge'   => false,
@@ -116,7 +116,7 @@ describe 'ssh', :type => :class do
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -127,7 +127,7 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.dir').with({
+            is_expected.to contain_file('ssh.dir').with(
               'ensure'  => 'directory',
               'force'   => true,
               'purge'   => true,
@@ -135,7 +135,7 @@ describe 'ssh', :type => :class do
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -145,12 +145,12 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh/sshd_config',
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -160,12 +160,12 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'content' => /THIS FILE IS MANAGED BY PUPPET/,
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -175,12 +175,12 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'content' => /THIS FILE IS MANAGED BY PUPPET/,
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
 
@@ -193,12 +193,12 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_file('ssh.conf').with({
+            is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'content' => /THIS FILE IS MANAGED BY PUPPET/,
               'notify'  => 'Service[ssh]',
               'require' => 'Package[openssh-server]',
-            })
+            )
           end
         end
       end
@@ -206,10 +206,10 @@ describe 'ssh', :type => :class do
       describe 'ssh::service' do
         context 'defaults' do
           it do
-            is_expected.to contain_service('ssh').with({
+            is_expected.to contain_service('ssh').with(
               'ensure' => 'running',
               'enable' => true,
-            })
+            )
           end
         end
 
@@ -219,10 +219,10 @@ describe 'ssh', :type => :class do
           }}
 
           it do
-            is_expected.to contain_service('ssh').with({
+            is_expected.to contain_service('ssh').with(
               'ensure' => 'stopped',
               'enable' => true,
-            })
+            )
           end
         end
       end

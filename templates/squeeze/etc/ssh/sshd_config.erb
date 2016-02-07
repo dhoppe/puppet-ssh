@@ -28,11 +28,11 @@ LogLevel INFO
 
 # Authentication:
 LoginGraceTime 120
-PermitRootLogin <%= scope.lookupvar('::ssh::permit_root_login') %>
+PermitRootLogin <%= scope['::ssh::permit_root_login'] %>
 StrictModes yes
 
 RSAAuthentication yes
-PubkeyAuthentication <%= scope.lookupvar('::ssh::pubkey_authentication') %>
+PubkeyAuthentication <%= scope['::ssh::pubkey_authentication'] %>
 #AuthorizedKeysFile	%h/.ssh/authorized_keys
 
 # Don't read the user's ~/.rhosts and ~/.shosts files
@@ -52,7 +52,7 @@ PermitEmptyPasswords no
 ChallengeResponseAuthentication no
 
 # Change to no to disable tunnelled clear text passwords
-PasswordAuthentication <%= scope.lookupvar('::ssh::password_authentication') %>
+PasswordAuthentication <%= scope['::ssh::password_authentication'] %>
 
 # Kerberos options
 #KerberosAuthentication no
@@ -88,20 +88,20 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # If you just want the PAM account and session checks to run without
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
-UsePAM <%= scope.lookupvar('::ssh::use_pam') %>
+UsePAM <%= scope['::ssh::use_pam'] %>
 
-<% if scope.lookupvar('::ssh::allow_groups').any? -%>
-AllowGroups <%= scope.lookupvar('::ssh::allow_groups').join(" ") %>
+<% if scope['::ssh::allow_groups'].any? -%>
+AllowGroups <%= scope['::ssh::allow_groups'].join(" ") %>
 <% end -%>
-<% if scope.lookupvar('::ssh::allow_users').any? -%>
-AllowUsers <%= scope.lookupvar('::ssh::allow_users').join(" ") %>
+<% if scope['::ssh::allow_users'].any? -%>
+AllowUsers <%= scope['::ssh::allow_users'].join(" ") %>
 <% end -%>
-<% if scope.lookupvar('::ssh::deny_groups').any? -%>
-DenyGroups <%= scope.lookupvar('::ssh::deny_groups').join(" ") %>
+<% if scope['::ssh::deny_groups'].any? -%>
+DenyGroups <%= scope['::ssh::deny_groups'].join(" ") %>
 <% end -%>
-<% if scope.lookupvar('::ssh::deny_users').any? -%>
-DenyUsers <%= scope.lookupvar('::ssh::deny_users').join(" ") %>
+<% if scope['::ssh::deny_users'].any? -%>
+DenyUsers <%= scope['::ssh::deny_users'].join(" ") %>
 <% end -%>
-<% if scope.lookupvar('::ssh::use_dns') == 'yes' -%>
-UseDNS <%= scope.lookupvar('::ssh::use_dns') %>
+<% if scope['::ssh::use_dns'] == 'yes' -%>
+UseDNS <%= scope['::ssh::use_dns'] %>
 <% end -%>

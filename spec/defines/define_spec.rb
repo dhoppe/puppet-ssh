@@ -16,12 +16,12 @@ describe 'ssh::define', :type => :define do
         }}
 
         it do
-          is_expected.to contain_file('define_sshd_config').with({
+          is_expected.to contain_file('define_sshd_config').with(
             'ensure'  => 'present',
             'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh/sshd_config',
             'notify'  => 'Service[ssh]',
             'require' => 'Package[openssh-server]',
-          })
+          )
         end
       end
 
@@ -32,12 +32,12 @@ describe 'ssh::define', :type => :define do
         }}
 
         it do
-          is_expected.to contain_file('define_sshd_config').with({
+          is_expected.to contain_file('define_sshd_config').with(
             'ensure'  => 'present',
             'content' => /THIS FILE IS MANAGED BY PUPPET/,
             'notify'  => 'Service[ssh]',
             'require' => 'Package[openssh-server]',
-          })
+          )
         end
       end
 
@@ -48,12 +48,12 @@ describe 'ssh::define', :type => :define do
         }}
 
         it do
-          is_expected.to contain_file('define_sshd_config').with({
+          is_expected.to contain_file('define_sshd_config').with(
             'ensure'  => 'present',
             'content' => /THIS FILE IS MANAGED BY PUPPET/,
             'notify'  => 'Service[ssh]',
             'require' => 'Package[openssh-server]',
-          })
+          )
         end
       end
 
@@ -67,12 +67,12 @@ describe 'ssh::define', :type => :define do
         }}
 
         it do
-          is_expected.to contain_file('define_sshd_config').with({
+          is_expected.to contain_file('define_sshd_config').with(
             'ensure'  => 'present',
             'content' => /THIS FILE IS MANAGED BY PUPPET/,
             'notify'  => 'Service[ssh]',
             'require' => 'Package[openssh-server]',
-          })
+          )
         end
       end
     end
