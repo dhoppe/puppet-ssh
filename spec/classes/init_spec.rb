@@ -1,22 +1,20 @@
 require 'spec_helper'
 
 describe 'ssh', type: :class do
-  ['Debian'].each do |osfamily|
-    let(:facts) do
-      {
-        osfamily: osfamily
-      }
-    end
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-    # it { is_expected.to compile.with_all_deps }
-    it { is_expected.to contain_anchor('ssh::begin') }
-    it { is_expected.to contain_class('ssh::params') }
-    it { is_expected.to contain_class('ssh::install') }
-    it { is_expected.to contain_class('ssh::config') }
-    it { is_expected.to contain_class('ssh::service') }
-    it { is_expected.to contain_anchor('ssh::end') }
+      # it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_anchor('ssh::begin') }
+      it { is_expected.to contain_class('ssh::params') }
+      it { is_expected.to contain_class('ssh::install') }
+      it { is_expected.to contain_class('ssh::config') }
+      it { is_expected.to contain_class('ssh::service') }
+      it { is_expected.to contain_anchor('ssh::end') }
 
-    context "on #{osfamily}" do
       describe 'ssh::install' do
         context 'defaults' do
           it do

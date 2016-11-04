@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe 'ssh::define', type: :define do
-  ['Debian'].each do |osfamily|
-    let(:facts) do
-      {
-        osfamily: osfamily
-      }
-    end
-    let(:pre_condition) { 'include ssh' }
-    let(:title) { 'sshd_config' }
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-    context "on #{osfamily}" do
+      let(:pre_condition) { 'include ssh' }
+      let(:title) { 'sshd_config' }
+
       context 'when source file' do
         let(:params) do
           {
