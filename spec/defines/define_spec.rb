@@ -23,7 +23,7 @@ describe 'ssh::define', type: :define do
             'ensure'  => 'present',
             'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh/sshd_config',
             'notify'  => 'Service[ssh]',
-            'require' => 'Package[openssh-server]'
+            'require' => 'Package[ssh]'
           )
         end
       end
@@ -41,7 +41,7 @@ describe 'ssh::define', type: :define do
             'ensure'  => 'present',
             'content' => %r{THIS FILE IS MANAGED BY PUPPET},
             'notify'  => 'Service[ssh]',
-            'require' => 'Package[openssh-server]'
+            'require' => 'Package[ssh]'
           )
         end
       end
@@ -59,7 +59,7 @@ describe 'ssh::define', type: :define do
             'ensure'  => 'present',
             'content' => %r{THIS FILE IS MANAGED BY PUPPET},
             'notify'  => 'Service[ssh]',
-            'require' => 'Package[openssh-server]'
+            'require' => 'Package[ssh]'
           )
         end
       end
@@ -80,7 +80,7 @@ describe 'ssh::define', type: :define do
             'ensure'  => 'present',
             'content' => %r{THIS FILE IS MANAGED BY PUPPET},
             'notify'  => 'Service[ssh]',
-            'require' => 'Package[openssh-server]'
+            'require' => 'Package[ssh]'
           )
         end
       end

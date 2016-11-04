@@ -34,7 +34,7 @@ class ssh::params {
   }
 
   $config_file_require = $::osfamily ? {
-    default => 'Package[openssh-server]',
+    default => 'Package[ssh]',
   }
 
   $service_name = $::osfamily ? {

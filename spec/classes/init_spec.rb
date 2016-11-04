@@ -7,7 +7,7 @@ describe 'ssh', type: :class do
         facts
       end
 
-      # it { is_expected.to compile.with_all_deps }
+      it { is_expected.to compile.with_all_deps }
       it { is_expected.to contain_anchor('ssh::begin') }
       it { is_expected.to contain_class('ssh::params') }
       it { is_expected.to contain_class('ssh::install') }
@@ -56,7 +56,7 @@ describe 'ssh', type: :class do
             is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
           it do
@@ -85,7 +85,7 @@ describe 'ssh', type: :class do
             is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'absent',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
           it do
@@ -103,7 +103,7 @@ describe 'ssh', type: :class do
             is_expected.to contain_file('ssh.conf').with(
               'ensure'  => 'present',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -123,7 +123,7 @@ describe 'ssh', type: :class do
               'recurse' => true,
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -144,7 +144,7 @@ describe 'ssh', type: :class do
               'recurse' => true,
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -161,7 +161,7 @@ describe 'ssh', type: :class do
               'ensure'  => 'present',
               'source'  => 'puppet:///modules/ssh/wheezy/etc/ssh/sshd_config',
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -178,7 +178,7 @@ describe 'ssh', type: :class do
               'ensure'  => 'present',
               'content' => %r{THIS FILE IS MANAGED BY PUPPET},
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -195,7 +195,7 @@ describe 'ssh', type: :class do
               'ensure'  => 'present',
               'content' => %r{THIS FILE IS MANAGED BY PUPPET},
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
@@ -215,7 +215,7 @@ describe 'ssh', type: :class do
               'ensure'  => 'present',
               'content' => %r{THIS FILE IS MANAGED BY PUPPET},
               'notify'  => 'Service[ssh]',
-              'require' => 'Package[openssh-server]'
+              'require' => 'Package[ssh]'
             )
           end
         end
